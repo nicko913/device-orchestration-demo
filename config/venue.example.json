@@ -1,0 +1,17 @@
+{
+  "zones": [
+    { "id": "bar",    "name": "Bar",         "deviceId": "display-bar"    },
+    { "id": "dining", "name": "Dining Room",  "deviceId": "display-dining" },
+    { "id": "patio",  "name": "Patio",        "deviceId": "display-patio"  }
+  ],
+  "sources": [
+    { "id": "cable-1",   "name": "Cable Box 1",     "deviceId": "matrix-input-1" },
+    { "id": "cable-2",   "name": "Cable Box 2",     "deviceId": "matrix-input-2" },
+    { "id": "streaming", "name": "Streaming Player", "deviceId": "matrix-input-3" }
+  ],
+  "audioZones": [
+    { "id": "bar-audio",    "name": "Bar Audio",    "deviceId": "audio-zone-bar",    "defaultVolume": 40 },
+    { "id": "dining-audio", "name": "Dining Audio", "deviceId": "audio-zone-dining", "defaultVolume": 35 },
+    { "id": "patio-audio",  "name": "Patio Audio",  "deviceId": "audio-zone-patio",  "defaultVolume": 30 }
+  ]
+}

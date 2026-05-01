@@ -199,23 +199,39 @@ cd device-orchestration-demo
 # Copy the example config
 cp config/venue.example.json config/venue.json
 
-dotnet run --project src/
+dotnet run
 
 # API is now live at http://localhost:5000
 ```
 
 Try it:
 ```bash
-# List all registered devices
+# List all registered devices and their current state
 curl http://localhost:5000/api/devices
 
 # Get the state of the bar display
-curl http://localhost:5000/api/devices/display-bar-1/state
+curl http://localhost:5000/api/devices/display-bar/state
 
-# Power it on
-curl -X POST http://localhost:5000/api/devices/display-bar-1/command \
+# Power on all displays
+curl -X POST http://localhost:5000/api/devices/display-bar/command \
   -H "Content-Type: application/json" \
-  -d '{"command": "setPower", "parameters": {"on": true}}'
+  -d '{"command": "setPower", "parameters": {"on": "true"}}'
+
+# Route a source to a zone (select zone → select source → route)
+curl -X POST http://localhost:5000/api/route \
+  -H "Content-Type: application/json" \
+  -d '{"action": "selectZone", "targetId": "bar"}'
+
+curl -X POST http://localhost:5000/api/route \
+  -H "Content-Type: application/json" \
+  -d '{"action": "selectSource", "targetId": "cable-1"}'
+
+curl -X POST http://localhost:5000/api/route \
+  -H "Content-Type: application/json" \
+  -d '{"action": "routeSource"}'
+
+# Inspect the current routing table
+curl http://localhost:5000/api/routing-table
 ```
 
 ---
