@@ -250,6 +250,18 @@ This demo is extracted from a production system — **AVConductorSuite** — a c
 
 The architectural patterns here — interface abstraction, config-driven routing, and the canonical Northbound API — are the same patterns that make the full system's complexity manageable.
 
+### Panel UI (WPF Touchscreen)
+
+The wall-mounted touchscreen panel that venue staff use daily. Config-driven — all zones, sources, destinations, and transport controls come from `panelConfig.json` with no code changes required.
+
+![Main video routing panel](screenshots/wpf-main.png)
+
+![Theme variants](screenshots/wpf-themes.png)
+
+![Audio zone control](screenshots/wpf-audio.png)
+
+![Mobile web companion](screenshots/web-panel.png)
+
 ---
 
 ## What's Intentionally Omitted

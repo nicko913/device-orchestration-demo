@@ -1,4 +1,5 @@
 using DeviceOrchestrationDemo.Execution;
+using DeviceOrchestrationDemo.Infrastructure;
 
 namespace DeviceOrchestrationDemo.Api;
 
@@ -52,6 +53,14 @@ public static class NorthboundEndpoints
         // Inspect the current zone → source routing table
         app.MapGet("/api/routing-table", (CommandRouter router) =>
             Results.Ok(router.RoutingTable));
+
+        // List all zones from config
+        app.MapGet("/api/zones", (VenueConfig config) =>
+            Results.Ok(config.Zones.Select(z => new { z.Id, z.Name, z.DeviceId })));
+
+        // List all sources from config
+        app.MapGet("/api/sources", (VenueConfig config) =>
+            Results.Ok(config.Sources.Select(s => new { s.Id, s.Name, s.DeviceId })));
 
         return app;
     }
